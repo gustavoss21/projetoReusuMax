@@ -1,0 +1,112 @@
+/* definiçoes gerais */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #0c0b0b08;
+}
+
+/* cabecalho */
+header {
+    background: lightblue;
+}
+
+header li:hover {
+    background-color: #5794a8;
+    border-radius: 10px;
+    color: white;
+}
+
+header a:hover {
+    color: white;
+}
+
+.navbar-brand {
+    font-size: 3.5em;
+}
+
+.navbar-brand>span {
+    color: red;
+}
+
+/* barra direita|esquerda */
+.barra-lateral-esquerda,
+.barra-folha {
+    color: rgb(0, 0, 0);
+    font-size: 1.2em;
+    padding: 20px 0px 0px 10px;
+    background-color: rgba(173, 216, 230, 0.500);
+    width: 198px;
+}
+
+/* barra lateral esquerda */
+.barra-lateral-esquerda .solo:hover {
+    background-color: LightBlue;
+}
+
+.barra-lateral-esquerda li.ol:hover {
+    background-color: rgba(173, 216, 230, 0.494);
+}
+
+/* conteudo central folha */
+#editor.ql-container.ql-snow {
+    margin-top: 20px;
+    margin-right: 20px;
+
+
+}
+
+.ql-editor {
+    padding: 12% 17.4%;
+    font-size: 100%;
+    /* overflow: hidden; */
+    box-shadow: 1px 0px 20px -2px #00000036;
+    background-color: white;
+    /* box-sizing: border-box; */
+    margin-bottom: 10px;
+
+
+}
+
+
+/* barra lateral direita */
+#bloco-right button.dropdown-toggle {
+    margin: 0px 0px 10px 20px;
+    width: 129px;
+    height: 40px;
+    background-color: rgb(87, 148, 168, 0.8);
+}
+
+.barra-folha li:hover {
+    background-color: LightBlue;
+}
+
+.barra-folha .flex-column {
+    width: 210px;
+}
+
+#bloco-right ul.dropdown-menu {
+    width: 236px;
+}
+
+#bloco-right ul.dropdown-menu li {
+    padding: 10px;
+}
+
+/* range flutuate */
+#tamanho-folha-edit {
+    position: fixed;
+    bottom: 50px;
+    right: 69px;
+    width: 276px;
+}
+
+/* resposividade */
+
+@media (min-width:992px) {}
+
+@media (max-width:992px) {}
+
+@media (max-width:768px) {}
