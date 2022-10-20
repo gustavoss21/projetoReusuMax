@@ -1,7 +1,7 @@
-let n = 7
-let v = 25 / 5
-// console.log(v)
-while (21 >= n) {
-    console.log(n)
-    n += n
-}
+let n = 'Rodrigues Alves morreu antes de ser empossado para seu'
+console.log(n.length)
+console.log(n.slice(0, 27))
+console.log(n.slice(27,))
+console.log()
+console.log()
+console.log()

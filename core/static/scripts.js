@@ -13,11 +13,14 @@ let nova_folha
 let clone_conteudo
 var folha
 var conta_folha = 0
+var modo_leitura
+
+
 
 
 icon.setAttribute('class', 'fa-regular fa-floppy-disk')
 btn_save.appendChild(icon)
-
+editor.onclick = () => console.log(this.selectionStart)
 // class Folha{
 //     constructor() {
 //         this.largura = window.getComputedStyle(bloco_center).width.slice(0, -2)
@@ -25,31 +28,37 @@ btn_save.appendChild(icon)
 //         this.font_size =
 //     }
 // }
+// folhas.forEach(function (value) {
+//     value.ondblclick = () => console.log(value.setSelectionRange)
+// })
+// folhas[0].onclick = () => console.log(folhas[0].selectionStart)
+".substring(0, ta.selectionStart)"
 function rangeFolha() {
     folhas = document.querySelectorAll('.ql-editor')
-    console.log(folhas)
+    // console.log('total ' + editor.innerText.length)
     for (contador of folhas) {
         folha = contador
+
         defineTamanhoFolha()
-        console.log(contador)
+        if (!modo_leitura) {
+
+            quebraPagina()
+        }
+
 
     }
 }
-// function rangeFolha() {
-//     folhas = document.querySelectorAll('.ql-editor')
-//     folha = folhas[conta_folha]
-//     defineTamanhoFolha()
-//     console.log(conta_folha)
-//     console.log(folhas[conta_folha])
-//     return conta_folha + 1
-// }
+
 
 function defineTamanhoFolha() {
     let largura = window.getComputedStyle(bloco_center).width.slice(0, -2)
     largura = largura * (inputRange.value / 100)
     editor.style.width = largura + 'px'
-    ajustaTamanhoFont()
-    ajustaAlturaFolha()
+    if (!modo_leitura) {
+        ajustaTamanhoFont()
+        ajustaAlturaFolha()
+    }
+
 }
 
 
@@ -57,7 +66,7 @@ function ajustaAlturaFolha() {
     largura = window.getComputedStyle(editor).width.slice(0, -2)
     altura_conteudo = largura / 0.7069555302166477
     folha.style.height = altura_conteudo + 'px'
-    console.log('largura: ' + parseInt(largura) + ' altura: ' + parseInt(altura_conteudo))
+    // console.log('largura: ' + parseInt(largura) + ' altura: ' + parseInt(altura_conteudo))
     return
 
 }
@@ -65,24 +74,46 @@ function ajustaAlturaFolha() {
 function ajustaTamanhoFont() {
     let largura = window.getComputedStyle(folha).width.slice(0, -2) * 0.1
     folha.style.fontSize = largura + '%'
-    console.log('fonte: ' + parseInt(largura))
+    // console.log('fonte: ' + parseInt(largura))
 
 }
 
 // define o modo somente leitura
-btn_leitura.onclick = function () {
+function modoLeitura() {
+
+    // console.log(folha.innerHTML.length)
+    // console.log('total ' + editor.innerText.length)
     if (folha.getAttribute('contenteditable') === 'true') {
+        let conteudo = ''
+        // console.log(folhas)
+        for (pagina of folhas) {
+            conteudo += pagina.innerHTML
+            if (pagina == folha) {
+                // console.log(pagina)
+            } else {
+                pagina.remove()
+            }
+        }
+
+        folha.innerHTML = ''
+        // console.log('total ' + editor.innerText.length)
+
+        folha.innerHTML = conteudo
+        modo_leitura = true
         folha.setAttribute('contenteditable', false)
         this.innerHTML = 'Editar'
-        editor.style.height = 'auto'
+
+        folha.style.height = 'auto'
         barra_edicao.style.display = 'none'
+        return defineTamanhoFolha()
     } else {
+        modo_leitura = false
         folha.setAttribute('contenteditable', true)
         this.innerHTML = 'Somente leitura'
         barra_edicao.style.display = 'block'
-        ajustaAlturaFolha()
+        // console.log('total ' + editor.innerText.length)
+        return rangeFolha()
     }
-
 
 }
 
@@ -90,11 +121,11 @@ function quebraPagina() {
     folhas = document.querySelectorAll('.ql-editor')
     let total_folhas = folhas.length
     folha = folhas[total_folhas - 1]
-    if (total_folhas > 5) {
-        console.log('parada de seguraça')
+    if (total_folhas > 600) {
+        alert('Houve um erro inesperado!')
         return
     }
-    // console.log(folha)
+    // console.log('quebra dentro')
     const folha_conteudo = folha.children //////////
     let altura_conteudo = 0
     let paddingY = folha.offsetHeight * 0.164
@@ -167,8 +198,9 @@ function quebraPagina() {
         // console.log(ultimoConteudoIndice)
         // console.log(folha_conteudo)
         if (quebra_pagina) {
-            console.log('quebra pagina')
+            // console.log('quebra pagina')
             let paragrafo_passou = quebraLinha(tamanhoPassou, conteudo_elemento) //tem que fazer a chamada da funçao com os argumentos
+            // console.log(paragrafo_passou)
             return novaFolha(listaPassou, paragrafo_passou)
             // console.log('passado: ' + listaPassou)
         }
@@ -183,8 +215,8 @@ function quebraPagina() {
 function quebraLinha(altura_passou, elemento) {
 
     let linhaHeigth = window.getComputedStyle(elemento).lineHeight.slice(0, -2)
-    let indice = parseInt(parseFloat(altura_passou).toFixed())
-    let i = parseInt(parseFloat(altura_passou).toFixed())
+    // let indice = parseInt(parseFloat(altura_passou).toFixed())
+    // let i = parseInt(parseFloat(altura_passou).toFixed())
     linhaHeigth = parseInt(parseFloat(linhaHeigth).toFixed())
     // ultimoConteudoAltura = folha_conteudo[ultimoConteudoIndice].offsetHeight
     scrollHeights = elemento.scrollHeight
@@ -192,57 +224,30 @@ function quebraLinha(altura_passou, elemento) {
     let contador = 0
     let total_resto = elemento.innerText.length % 121
     let total = elemento.innerText.length
+    let indice = total - total_resto
+    let seguranca = 0
 
-
-
+    // console.log('passou ' + altura_passou)
     // console.log(linhaHeigth)
-    // console.log(elemento.innerHTML)
-    // console.log(total > 121)
-    if (total > 121) {
-        // console.log(altura_passou)
-        // elemento.innerHTML = ''
-        // console.log(altura_passou)
-        // while (altura_passou > contador) {
-        //     contador += linhaHeigth
+    while (contador < altura_passou) {
 
-        // }
-        contador = Math.ceil(altura_passou / linhaHeigth)
+        seguranca++
+        if (seguranca > 100) {
+            console.log('parada de segurança')
+            break
+        }
+        contador += linhaHeigth
 
-        elemento.innerText = elemento.innerText.slice(0, total - total_resto)
-        // console.log('total ' + total + ' resto ' + total_resto + ' linhas ' + elemento.innerText.length / 121)
-        // console.log(elemento.innerText.slice(0, total - total_resto))
-        // console.log(elemento.innerText.length)
-        return elemento.innerText.slice(total_resto,)
-        // for (indice; indice > 0; indice--) {
-        //     // console.log('linha: ' + linhaHeigth + ' conteudo: ' + scrollHeights)
-        //     // console.log('passou: ' + tamanhoPassou + ' indice: ' + i + (tamanhoPassou <= i))
-        //     // console.log('segundo: ' + folha_conteudo[ultimoConteudoIndice].innerHTML.slice(0, 114 * contador))//
-        //     contador++
-        //     console.log(indice)
-        //     // folha_conteudo[ultimoConteudoIndice].innerHTML = folha_conteudo[ultimoConteudoIndice].innerHTML.slice(0, 60 * contador)
-        //     i -= linhaHeigth
-        //     if (i > 11) {
-        //         console.log(elemento.innerText)
-
-
-        //         //  elemento errado
-
-        //         // elemento.innerHTML = elemento.innerHTML.slice(0, 30 * contador)
-        //         // console.log(elemento.innerText.slice(0, 114 * contador))
-        //         break
-        //     }
-        // }
-
-
-    } else {
-        return
     }
-
+    let linhas = contador / linhaHeigth
+    let conteudo_quebra = elemento.innerHTML.slice(linhas * 121,)
+    elemento.innerHTML = elemento.innerHTML.slice(0, linhas * 121)
+    return conteudo_quebra
 
 }
 
 function novaFolha(listaConteudo, paragrafo_topo) {
-    folhas = document.querySelectorAll('.ql-editor')
+    // folhas = document.querySelectorAll('.ql-editor')
     let total_folhas = folhas.length
     folha = folhas[total_folhas - 1]
     // console.log('execultou novaFolha')
@@ -301,10 +306,10 @@ function novaFolha(listaConteudo, paragrafo_topo) {
 
 btn_save.onclick = () => salvar()
 body.onresize = () => rangeFolha()
+inputRange.onclick = () => rangeFolha()
 
-// em produçao
 rangeFolha()
-quebraPagina()
-rangeFolha()
+btn_leitura.onclick = () => modoLeitura()
+
 
 

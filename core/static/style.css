@@ -60,8 +60,8 @@ header a:hover {
 
 .ql-editor {
     padding: 12% 17.4%;
-    font-size: 100%;
-    /* overflow: hidden; */
+    /* font-size: 100%; */
+        overflow: hidden;
     box-shadow: 1px 0px 20px -2px #00000036;
     background-color: white;
     /* box-sizing: border-box; */
