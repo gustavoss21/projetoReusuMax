@@ -66,10 +66,46 @@ header a:hover {
     background-color: white;
     /* box-sizing: border-box; */
     margin-bottom: 10px;
-
-
 }
 
+#selecao {
+    padding: 5px;
+    width: 103px;
+    top: 222px;
+    right: -353px;
+    z-index: 5;
+    position: absolute;
+    /* flex: right; */
+    height: 155px;
+    order: 3;
+    background-color: rgb(192 217 225);
+    /* flex-direction: column; */
+    border: 1px solid #5794a82b;
+}
+
+#selecao .linha {
+    border-top: 1px solid #5794a8;
+}
+
+#conteudo-selecao {
+    margin: 15px 0px 0px 15px;
+}
+
+#conteudo-selecao div {
+    padding: 3px;
+    color: #086f6f;
+    border-radius: 4px;
+    font-size: 0.6em;
+}
+
+#conteudo-selecao div:hover {
+    color: #fafafa;
+    background-color: hsla(180, 87%, 23%, 0.529);
+}
+
+#title-selecao {
+    font-size: 0.5em;
+}
 
 /* barra lateral direita */
 #bloco-right button.dropdown-toggle {

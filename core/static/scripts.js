@@ -16,23 +16,9 @@ var conta_folha = 0
 var modo_leitura
 
 
-
-
 icon.setAttribute('class', 'fa-regular fa-floppy-disk')
 btn_save.appendChild(icon)
-editor.onclick = () => console.log(this.selectionStart)
-// class Folha{
-//     constructor() {
-//         this.largura = window.getComputedStyle(bloco_center).width.slice(0, -2)
-//         this.altura = largura / 0.7069555302166477
-//         this.font_size =
-//     }
-// }
-// folhas.forEach(function (value) {
-//     value.ondblclick = () => console.log(value.setSelectionRange)
-// })
-// folhas[0].onclick = () => console.log(folhas[0].selectionStart)
-".substring(0, ta.selectionStart)"
+
 function rangeFolha() {
     folhas = document.querySelectorAll('.ql-editor')
     // console.log('total ' + editor.innerText.length)
@@ -288,23 +274,10 @@ function novaFolha(listaConteudo, paragrafo_topo) {
     // console.log(total_folhas)
     // console.log(folha)
 }
-// function retorna_html() {
-//     let folhas = document.querySelectorAll('.ql-editor')
-//     // editor = document.querySelector('#editor.ql-container.ql-snow')
-//     let conteudo
-//     // for (pagina of folhas) {
-//     //     for (let folha of pagina.children) {
-//     //         console.log(folha)
-//     //     }
-//     // }
-//     // console.log(editor.innerHTML.slice(119,))
-//     let editor = folhas[0].innerHTML
-//     console.log(editor)
-//     return editor.innerHTML
-// }
 
 
-btn_save.onclick = () => salvar()
+
+btn_save.onclick = () => salvarConteudo()
 body.onresize = () => rangeFolha()
 inputRange.onclick = () => rangeFolha()
 

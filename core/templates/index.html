@@ -49,6 +49,18 @@
 
     </header>
     <main class="row">
+        <!--opçoes de seleçao-->
+        <div id="selecao" hidden="hidden" focus>
+            <span id="title-selecao">definir como:</span>
+            <div class="linha"></div>
+            <div id="conteudo-selecao">
+                <div id="btn-tema">tema</div>
+                <div id="btn-subtema">subtema</div>
+                <div id="btn-topico">topico</div>
+                <div id="btn-importante">importante</div>
+                <div id="btn-destaque">destaque</div>
+            </div>
+        </div>
         <!-- barra lateral esquerda -->
         <div class="col-md-2 barra-lateral-esquerda d-none d-md-block">
             <div class="dropdown" id="bloco-right">
@@ -66,7 +78,7 @@
                             Leitura</button>
                     </li>
                     <li>
-                        <button type="button" class="btn btn-light w-75 mb-3" onclick="salvar()">salvar</button>
+                        <button type="button" class="btn btn-light w-75 mb-3" onclick="salvarConteudo()">salvar</button>
                     </li>
                 </ul>
             </div>
@@ -122,6 +134,7 @@
     <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
     <script src="{% static 'quilljs.js' %}"></script>
     <script src="{% static 'scripts.js' %}"></script>
+    <script src="{% static 'texFucao.js' %}"></script>
     <!-- <script id="hello-data" type="application/json">{{ artigo }}</script> -->
     <!-- <script id="hello-data" type="application/json">{"hello": "world"}</script> -->
 </body>
