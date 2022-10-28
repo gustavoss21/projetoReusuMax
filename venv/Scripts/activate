@@ -37,7 +37,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="E:\Users\projetoReusuMax\venv"
+VIRTUAL_ENV="E:\Users\ReusuMax\projetoReusuMax\venv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

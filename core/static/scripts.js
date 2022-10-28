@@ -284,5 +284,8 @@ inputRange.onclick = () => rangeFolha()
 rangeFolha()
 btn_leitura.onclick = () => modoLeitura()
 
+// var container = document.getElementById('editor');
+// var editores = new Quill(folhas);
 
+// console.log(folhas)
 
