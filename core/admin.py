@@ -10,19 +10,19 @@ class ConteudoAdmin(admin.ModelAdmin):
 
 @admin.register(SubtemaModel)
 class SubtemaAdmin(admin.ModelAdmin):
-    list_display = ('subtema',)
+    list_display = ('folha_index', 'subtema', 'index', 'tamanho',)
 
 
 @admin.register(TopicoModel)
 class TopicoAdmin(admin.ModelAdmin):
-    list_display = ('topico',)
+    list_display = ('folha_index', 'topico', 'index', 'tamanho',)
 
 
 @admin.register(DestaqueModel)
 class DestaqueAdmin(admin.ModelAdmin):
-    list_display = ('destaque',)
+    list_display = ('folha_index', 'destaque', 'index', 'tamanho',)
 
 
 @admin.register(ImportanteModel)
 class ImportateAdmin(admin.ModelAdmin):
-    list_display = ('importate',)
+    list_display = ('folha_index', 'importante', 'index', 'tamanho',)

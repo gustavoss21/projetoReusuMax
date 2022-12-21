@@ -1,11 +1,17 @@
 from django.urls import path
-from .views import HomeView, salvarConteudo, salvarDestaque, salvarImportante, salvarSubtema, salvarTopico
+from .views import (HomeView, SalvarConteudo, SalvarDestaque,
+                    SalvarImportante, SalvarSubtema, SalvarTopico,
+                    apagadorTextoFucao, BaixarPdf)
 
 urlpatterns = [
     path('', HomeView.as_view(), name='home'),
-    path('salvarConteudo/', salvarConteudo, name='salvarConteudo'),
-    path('salvarDestaque/', salvarDestaque, name='salvarDestaque'),
-    path('salvarImportante/', salvarImportante, name='salvarImportante'),
-    path('salvarSubtema/', salvarSubtema, name='salvarSubtema'),
-    path('salvarTopico/', salvarTopico, name='salvarTopico'),
+    path('salvarConteudo/', SalvarConteudo.as_view(), name='salvarConteudo'),
+    path('salvarDestaque/', SalvarDestaque.as_view(), name='salvarDestaque'),
+    path('salvarImportante/', SalvarImportante.as_view(), name='salvarImportante'),
+    path('salvarSubtema/', SalvarSubtema.as_view(), name='salvarSubtema'),
+    path('salvarTopico/', SalvarTopico.as_view(), name='salvarTopico'),
+    path('apagadorTextoFucao/', apagadorTextoFucao, name='apagadorTextoFucao'),
+    path('baixar-pdf/', BaixarPdf.as_view(), name='baixar-pdf'),
+    
 ]
+

@@ -1,3 +1,4 @@
 from django.test import TestCase
-
-# Create your tests here.
+import pdfkit
+pdfkit.from_string(
+    '<div style="background:red;margin: 0px 300px"><p>teste</p><p>tesg</p></div>', 'teste.pdf')

@@ -17,6 +17,10 @@ class ConteudoModel(models.Model):
 class SubtemaModel(models.Model):
     conteudo = models.ForeignKey(ConteudoModel, on_delete=models.CASCADE)
     subtema = models.TextField(blank=True)
+    index = models.IntegerField()
+    tamanho = models.IntegerField()
+    folha_index = models.IntegerField()
+
 
     class Meta:
         verbose_name = 'Subtema'
@@ -26,6 +30,9 @@ class SubtemaModel(models.Model):
 class TopicoModel(models.Model):
     conteudo = models.ForeignKey(ConteudoModel, on_delete=models.CASCADE)
     topico = models.TextField(blank=True)
+    index = models.IntegerField()
+    tamanho = models.IntegerField()
+    folha_index = models.IntegerField()
 
     class Meta:
         verbose_name = 'Topico'
@@ -35,6 +42,9 @@ class TopicoModel(models.Model):
 class DestaqueModel(models.Model):
     conteudo = models.ForeignKey(ConteudoModel, on_delete=models.CASCADE)
     destaque = models.TextField(blank=True)
+    index = models.IntegerField()
+    tamanho = models.IntegerField()
+    folha_index = models.IntegerField()
 
     class Meta:
         verbose_name = 'Destaque'
@@ -43,7 +53,10 @@ class DestaqueModel(models.Model):
 
 class ImportanteModel(models.Model):
     conteudo = models.ForeignKey(ConteudoModel, on_delete=models.CASCADE)
-    importate = models.TextField(blank=True)
+    importante = models.TextField(blank=True)
+    index = models.IntegerField()
+    tamanho = models.IntegerField()
+    folha_index = models.IntegerField()
 
     class Meta:
         verbose_name = 'Importante'
