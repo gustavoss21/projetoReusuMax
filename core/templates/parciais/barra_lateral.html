@@ -1,0 +1,55 @@
+{% load static %}
+<div class="col-md-2 barra-lateral-esquerda d-none d-md-block">
+    <div class="dropdown" id="bloco-right">
+        <button class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" type="button">filtro</button>
+        <ul class="dropdown-menu ps-4">
+            <div>
+                <input type="checkbox" id="filtro" name="filtro" value="filtro">
+                <label for="filtro">filtrar</label>
+            </div>
+            <div class="check-container">
+                <li class="dropdown-item">
+                    <input type="checkbox" id="subtema" name="subtema" value="subtema">
+                    <label for="tema">subtema</label>
+                </li>
+                <li class="dropdown-item">
+                    <input type="checkbox" id="topico" name="topico" value="topico">
+                    <label for="tema">topico</label>
+                </li>
+                <li class="dropdown-item">
+                    <input type="checkbox" id="importante" name="importante" value="importante">
+                    <label for="tema">importante</label>
+                </li>
+                <li class="dropdown-item">
+                    <input type="checkbox" id="destaque" name="destaque" value="destaque">
+                    <label for="tema">destaque</label>
+                </li>
+            </div>
+        </ul>
+        <button type="button" class="btn btn-light w-75 mb-3" id="btn-nova-folha">
+            Nova Folha
+        </button>
+        <button type="button" class="btn btn-light w-75 mb-3" id="btn-salvar-conteudo">salvar</button>
+        {% if pdf %}
+        <a id="btn-baixar-pdf" id="baixar-pdf" href="{% static 'arquivos/' %}{{pdf}}" download>
+            <button type="button" class="btn btn-light w-75 mb-3">
+                baixar c/ pdf
+            </button>
+        </a>
+        {% else %}
+        <a id="btn-baixar-pdf">
+            <button type="button" class="btn btn-light w-75 mb-3">
+                baixar c/ pdf
+            </button>
+        </a>
+        {% endif %}
+        <button type="button" class="btn btn-light w-75 mb-3" id="btn-leitura">Somente
+            leitura
+        </button>
+
+
+
+    </div>
+</div>
+
+</div>
